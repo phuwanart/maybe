@@ -1,3 +1,31 @@
+# == Schema Information
+#
+# Table name: invitations
+#
+#  id          :uuid             not null, primary key
+#  accepted_at :datetime
+#  email       :string
+#  expires_at  :datetime
+#  role        :string
+#  token       :string
+#  created_at  :datetime         not null
+#  updated_at  :datetime         not null
+#  family_id   :uuid             not null
+#  inviter_id  :uuid             not null
+#
+# Indexes
+#
+#  index_invitations_on_email                (email)
+#  index_invitations_on_email_and_family_id  (email,family_id) UNIQUE
+#  index_invitations_on_family_id            (family_id)
+#  index_invitations_on_inviter_id           (inviter_id)
+#  index_invitations_on_token                (token) UNIQUE
+#
+# Foreign Keys
+#
+#  fk_rails_...  (family_id => families.id)
+#  fk_rails_...  (inviter_id => users.id)
+#
 class Invitation < ApplicationRecord
   belongs_to :family
   belongs_to :inviter, class_name: "User"

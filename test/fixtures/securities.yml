@@ -1,3 +1,28 @@
+# == Schema Information
+#
+# Table name: securities
+#
+#  id                     :uuid             not null, primary key
+#  country_code           :string
+#  exchange_acronym       :string
+#  exchange_mic           :string
+#  exchange_operating_mic :string
+#  failed_fetch_at        :datetime
+#  failed_fetch_count     :integer          default(0), not null
+#  last_health_check_at   :datetime
+#  logo_url               :string
+#  name                   :string
+#  offline                :boolean          default(FALSE), not null
+#  ticker                 :string           not null
+#  created_at             :datetime         not null
+#  updated_at             :datetime         not null
+#
+# Indexes
+#
+#  index_securities_on_country_code                              (country_code)
+#  index_securities_on_exchange_operating_mic                    (exchange_operating_mic)
+#  index_securities_on_ticker_and_exchange_operating_mic_unique  (upper((ticker)::text), COALESCE(upper((exchange_operating_mic)::text), ''::text)) UNIQUE
+#
 aapl:
   ticker: AAPL
   name: Apple

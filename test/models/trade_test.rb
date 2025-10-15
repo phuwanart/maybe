@@ -1,3 +1,24 @@
+# == Schema Information
+#
+# Table name: trades
+#
+#  id                :uuid             not null, primary key
+#  currency          :string
+#  locked_attributes :jsonb
+#  price             :decimal(19, 4)
+#  qty               :decimal(19, 4)
+#  created_at        :datetime         not null
+#  updated_at        :datetime         not null
+#  security_id       :uuid             not null
+#
+# Indexes
+#
+#  index_trades_on_security_id  (security_id)
+#
+# Foreign Keys
+#
+#  fk_rails_...  (security_id => securities.id)
+#
 require "test_helper"
 
 class TradeTest < ActiveSupport::TestCase

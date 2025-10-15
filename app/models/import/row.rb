@@ -1,3 +1,33 @@
+# == Schema Information
+#
+# Table name: import_rows
+#
+#  id                     :uuid             not null, primary key
+#  account                :string
+#  amount                 :string
+#  category               :string
+#  currency               :string
+#  date                   :string
+#  entity_type            :string
+#  exchange_operating_mic :string
+#  name                   :string
+#  notes                  :text
+#  price                  :string
+#  qty                    :string
+#  tags                   :string
+#  ticker                 :string
+#  created_at             :datetime         not null
+#  updated_at             :datetime         not null
+#  import_id              :uuid             not null
+#
+# Indexes
+#
+#  index_import_rows_on_import_id  (import_id)
+#
+# Foreign Keys
+#
+#  fk_rails_...  (import_id => imports.id)
+#
 class Import::Row < ApplicationRecord
   belongs_to :import
 

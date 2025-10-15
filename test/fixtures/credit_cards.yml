@@ -1,3 +1,17 @@
+# == Schema Information
+#
+# Table name: credit_cards
+#
+#  id                :uuid             not null, primary key
+#  annual_fee        :decimal(10, 2)
+#  apr               :decimal(10, 2)
+#  available_credit  :decimal(10, 2)
+#  expiration_date   :date
+#  locked_attributes :jsonb
+#  minimum_payment   :decimal(10, 2)
+#  created_at        :datetime         not null
+#  updated_at        :datetime         not null
+#
 one:
   available_credit: 5000.00
   minimum_payment: 100.00

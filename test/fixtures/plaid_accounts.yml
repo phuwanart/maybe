@@ -1,3 +1,33 @@
+# == Schema Information
+#
+# Table name: plaid_accounts
+#
+#  id                       :uuid             not null, primary key
+#  available_balance        :decimal(19, 4)
+#  currency                 :string           not null
+#  current_balance          :decimal(19, 4)
+#  mask                     :string
+#  name                     :string           not null
+#  plaid_subtype            :string
+#  plaid_type               :string           not null
+#  raw_investments_payload  :jsonb
+#  raw_liabilities_payload  :jsonb
+#  raw_payload              :jsonb
+#  raw_transactions_payload :jsonb
+#  created_at               :datetime         not null
+#  updated_at               :datetime         not null
+#  plaid_id                 :string           not null
+#  plaid_item_id            :uuid             not null
+#
+# Indexes
+#
+#  index_plaid_accounts_on_plaid_id       (plaid_id) UNIQUE
+#  index_plaid_accounts_on_plaid_item_id  (plaid_item_id)
+#
+# Foreign Keys
+#
+#  fk_rails_...  (plaid_item_id => plaid_items.id)
+#
 one:
   current_balance: 1000
   available_balance: 1000

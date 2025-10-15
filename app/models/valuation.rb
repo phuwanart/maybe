@@ -1,3 +1,13 @@
+# == Schema Information
+#
+# Table name: valuations
+#
+#  id                :uuid             not null, primary key
+#  kind              :string           default("reconciliation"), not null
+#  locked_attributes :jsonb
+#  created_at        :datetime         not null
+#  updated_at        :datetime         not null
+#
 class Valuation < ApplicationRecord
   include Entryable
 

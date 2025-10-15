@@ -1,3 +1,25 @@
+# == Schema Information
+#
+# Table name: categories
+#
+#  id             :uuid             not null, primary key
+#  classification :string           default("expense"), not null
+#  color          :string           default("#6172F3"), not null
+#  lucide_icon    :string           default("shapes"), not null
+#  name           :string           not null
+#  created_at     :datetime         not null
+#  updated_at     :datetime         not null
+#  family_id      :uuid             not null
+#  parent_id      :uuid
+#
+# Indexes
+#
+#  index_categories_on_family_id  (family_id)
+#
+# Foreign Keys
+#
+#  fk_rails_...  (family_id => families.id)
+#
 one:
   name: Test
   family: empty

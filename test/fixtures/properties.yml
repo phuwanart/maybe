@@ -1,3 +1,15 @@
+# == Schema Information
+#
+# Table name: properties
+#
+#  id                :uuid             not null, primary key
+#  area_unit         :string
+#  area_value        :integer
+#  locked_attributes :jsonb
+#  year_built        :integer
+#  created_at        :datetime         not null
+#  updated_at        :datetime         not null
+#
 one:
   year_built: 2002
   area_value: 1000

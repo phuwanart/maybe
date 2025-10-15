@@ -1,3 +1,26 @@
+# == Schema Information
+#
+# Table name: transactions
+#
+#  id                :uuid             not null, primary key
+#  kind              :string           default("standard"), not null
+#  locked_attributes :jsonb
+#  created_at        :datetime         not null
+#  updated_at        :datetime         not null
+#  category_id       :uuid
+#  merchant_id       :uuid
+#
+# Indexes
+#
+#  index_transactions_on_category_id  (category_id)
+#  index_transactions_on_kind         (kind)
+#  index_transactions_on_merchant_id  (merchant_id)
+#
+# Foreign Keys
+#
+#  fk_rails_...  (category_id => categories.id) ON DELETE => nullify
+#  fk_rails_...  (merchant_id => merchants.id)
+#
 class Transaction < ApplicationRecord
   include Entryable, Transferable, Ruleable
 

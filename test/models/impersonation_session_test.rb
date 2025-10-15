@@ -1,3 +1,24 @@
+# == Schema Information
+#
+# Table name: impersonation_sessions
+#
+#  id              :uuid             not null, primary key
+#  status          :string           default("pending"), not null
+#  created_at      :datetime         not null
+#  updated_at      :datetime         not null
+#  impersonated_id :uuid             not null
+#  impersonator_id :uuid             not null
+#
+# Indexes
+#
+#  index_impersonation_sessions_on_impersonated_id  (impersonated_id)
+#  index_impersonation_sessions_on_impersonator_id  (impersonator_id)
+#
+# Foreign Keys
+#
+#  fk_rails_...  (impersonated_id => users.id)
+#  fk_rails_...  (impersonator_id => users.id)
+#
 require "test_helper"
 
 class ImpersonationSessionTest < ActiveSupport::TestCase

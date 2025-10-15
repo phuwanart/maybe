@@ -1,3 +1,30 @@
+# == Schema Information
+#
+# Table name: api_keys
+#
+#  id           :uuid             not null, primary key
+#  display_key  :string           not null
+#  expires_at   :datetime
+#  last_used_at :datetime
+#  name         :string
+#  revoked_at   :datetime
+#  scopes       :json
+#  source       :string           default("web")
+#  created_at   :datetime         not null
+#  updated_at   :datetime         not null
+#  user_id      :uuid             not null
+#
+# Indexes
+#
+#  index_api_keys_on_display_key         (display_key) UNIQUE
+#  index_api_keys_on_revoked_at          (revoked_at)
+#  index_api_keys_on_user_id             (user_id)
+#  index_api_keys_on_user_id_and_source  (user_id,source)
+#
+# Foreign Keys
+#
+#  fk_rails_...  (user_id => users.id)
+#
 class ApiKey < ApplicationRecord
   belongs_to :user
 

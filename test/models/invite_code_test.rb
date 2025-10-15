@@ -1,3 +1,16 @@
+# == Schema Information
+#
+# Table name: invite_codes
+#
+#  id         :uuid             not null, primary key
+#  token      :string           not null
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#
+# Indexes
+#
+#  index_invite_codes_on_token  (token) UNIQUE
+#
 require "test_helper"
 
 class InviteCodeTest < ActiveSupport::TestCase

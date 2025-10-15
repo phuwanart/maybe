@@ -1,3 +1,40 @@
+# == Schema Information
+#
+# Table name: balances
+#
+#  id                     :uuid             not null, primary key
+#  balance                :decimal(19, 4)   not null
+#  cash_adjustments       :decimal(19, 4)   default(0.0), not null
+#  cash_balance           :decimal(19, 4)   default(0.0)
+#  cash_inflows           :decimal(19, 4)   default(0.0), not null
+#  cash_outflows          :decimal(19, 4)   default(0.0), not null
+#  currency               :string           default("USD"), not null
+#  date                   :date             not null
+#  end_balance            :decimal(19, 4)
+#  end_cash_balance       :decimal(19, 4)
+#  end_non_cash_balance   :decimal(19, 4)
+#  flows_factor           :integer          default(1), not null
+#  net_market_flows       :decimal(19, 4)   default(0.0), not null
+#  non_cash_adjustments   :decimal(19, 4)   default(0.0), not null
+#  non_cash_inflows       :decimal(19, 4)   default(0.0), not null
+#  non_cash_outflows      :decimal(19, 4)   default(0.0), not null
+#  start_balance          :decimal(19, 4)
+#  start_cash_balance     :decimal(19, 4)   default(0.0), not null
+#  start_non_cash_balance :decimal(19, 4)   default(0.0), not null
+#  created_at             :datetime         not null
+#  updated_at             :datetime         not null
+#  account_id             :uuid             not null
+#
+# Indexes
+#
+#  index_account_balances_on_account_id_date_currency_unique  (account_id,date,currency) UNIQUE
+#  index_balances_on_account_id                               (account_id)
+#  index_balances_on_account_id_and_date                      (account_id,date DESC)
+#
+# Foreign Keys
+#
+#  fk_rails_...  (account_id => accounts.id) ON DELETE => cascade
+#
 class Balance < ApplicationRecord
   include Monetizable
 

@@ -1,3 +1,24 @@
+# == Schema Information
+#
+# Table name: rules
+#
+#  id             :uuid             not null, primary key
+#  active         :boolean          default(FALSE), not null
+#  effective_date :date
+#  name           :string
+#  resource_type  :string           not null
+#  created_at     :datetime         not null
+#  updated_at     :datetime         not null
+#  family_id      :uuid             not null
+#
+# Indexes
+#
+#  index_rules_on_family_id  (family_id)
+#
+# Foreign Keys
+#
+#  fk_rails_...  (family_id => families.id)
+#
 require "test_helper"
 
 class RuleTest < ActiveSupport::TestCase

@@ -1,3 +1,27 @@
+# == Schema Information
+#
+# Table name: transfers
+#
+#  id                     :uuid             not null, primary key
+#  notes                  :text
+#  status                 :string           default("pending"), not null
+#  created_at             :datetime         not null
+#  updated_at             :datetime         not null
+#  inflow_transaction_id  :uuid             not null
+#  outflow_transaction_id :uuid             not null
+#
+# Indexes
+#
+#  idx_on_inflow_transaction_id_outflow_transaction_id_8cd07a28bd  (inflow_transaction_id,outflow_transaction_id) UNIQUE
+#  index_transfers_on_inflow_transaction_id                        (inflow_transaction_id)
+#  index_transfers_on_outflow_transaction_id                       (outflow_transaction_id)
+#  index_transfers_on_status                                       (status)
+#
+# Foreign Keys
+#
+#  fk_rails_...  (inflow_transaction_id => transactions.id) ON DELETE => cascade
+#  fk_rails_...  (outflow_transaction_id => transactions.id) ON DELETE => cascade
+#
 class Transfer < ApplicationRecord
   belongs_to :inflow_transaction, class_name: "Transaction"
   belongs_to :outflow_transaction, class_name: "Transaction"

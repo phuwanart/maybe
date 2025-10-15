@@ -1,3 +1,26 @@
+# == Schema Information
+#
+# Table name: rule_conditions
+#
+#  id             :uuid             not null, primary key
+#  condition_type :string           not null
+#  operator       :string           not null
+#  value          :string
+#  created_at     :datetime         not null
+#  updated_at     :datetime         not null
+#  parent_id      :uuid
+#  rule_id        :uuid
+#
+# Indexes
+#
+#  index_rule_conditions_on_parent_id  (parent_id)
+#  index_rule_conditions_on_rule_id    (rule_id)
+#
+# Foreign Keys
+#
+#  fk_rails_...  (parent_id => rule_conditions.id)
+#  fk_rails_...  (rule_id => rules.id)
+#
 one:
   rule: one
   condition_type: transaction_name

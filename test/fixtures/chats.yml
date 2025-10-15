@@ -1,3 +1,24 @@
+# == Schema Information
+#
+# Table name: chats
+#
+#  id                           :uuid             not null, primary key
+#  error                        :jsonb
+#  instructions                 :string
+#  title                        :string           not null
+#  created_at                   :datetime         not null
+#  updated_at                   :datetime         not null
+#  latest_assistant_response_id :string
+#  user_id                      :uuid             not null
+#
+# Indexes
+#
+#  index_chats_on_user_id  (user_id)
+#
+# Foreign Keys
+#
+#  fk_rails_...  (user_id => users.id)
+#
 one:
   title: First Chat
   user: family_admin

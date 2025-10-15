@@ -1,3 +1,29 @@
+# == Schema Information
+#
+# Table name: mobile_devices
+#
+#  id                   :uuid             not null, primary key
+#  app_version          :string
+#  device_name          :string
+#  device_type          :string
+#  last_seen_at         :datetime
+#  os_version           :string
+#  created_at           :datetime         not null
+#  updated_at           :datetime         not null
+#  device_id            :string
+#  oauth_application_id :integer
+#  user_id              :uuid             not null
+#
+# Indexes
+#
+#  index_mobile_devices_on_oauth_application_id   (oauth_application_id)
+#  index_mobile_devices_on_user_id                (user_id)
+#  index_mobile_devices_on_user_id_and_device_id  (user_id,device_id) UNIQUE
+#
+# Foreign Keys
+#
+#  fk_rails_...  (user_id => users.id)
+#
 require "test_helper"
 
 class MobileDeviceTest < ActiveSupport::TestCase

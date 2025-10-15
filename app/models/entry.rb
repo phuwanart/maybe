@@ -1,3 +1,37 @@
+# == Schema Information
+#
+# Table name: entries
+#
+#  id                :uuid             not null, primary key
+#  amount            :decimal(19, 4)   not null
+#  currency          :string
+#  date              :date
+#  entryable_type    :string
+#  excluded          :boolean          default(FALSE)
+#  locked_attributes :jsonb
+#  name              :string           not null
+#  notes             :text
+#  created_at        :datetime         not null
+#  updated_at        :datetime         not null
+#  account_id        :uuid             not null
+#  entryable_id      :uuid
+#  import_id         :uuid
+#  plaid_id          :string
+#
+# Indexes
+#
+#  index_entries_on_account_id           (account_id)
+#  index_entries_on_account_id_and_date  (account_id,date)
+#  index_entries_on_date                 (date)
+#  index_entries_on_entryable_type       (entryable_type)
+#  index_entries_on_import_id            (import_id)
+#  index_entries_on_lower_name           (lower((name)::text))
+#
+# Foreign Keys
+#
+#  fk_rails_...  (account_id => accounts.id)
+#  fk_rails_...  (import_id => imports.id)
+#
 class Entry < ApplicationRecord
   include Monetizable, Enrichable
 

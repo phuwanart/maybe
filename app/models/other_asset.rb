@@ -1,3 +1,12 @@
+# == Schema Information
+#
+# Table name: other_assets
+#
+#  id                :uuid             not null, primary key
+#  locked_attributes :jsonb
+#  created_at        :datetime         not null
+#  updated_at        :datetime         not null
+#
 class OtherAsset < ApplicationRecord
   include Accountable
 

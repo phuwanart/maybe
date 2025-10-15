@@ -95,6 +95,8 @@ if ENV["BENCHMARKING_ENABLED"]
 end
 
 group :development do
+  gem "annotaterb"
+
   gem "hotwire-livereload"
   gem "letter_opener"
   gem "ruby-lsp-rails"

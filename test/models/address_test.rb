@@ -1,3 +1,24 @@
+# == Schema Information
+#
+# Table name: addresses
+#
+#  id               :uuid             not null, primary key
+#  addressable_type :string
+#  country          :string
+#  county           :string
+#  line1            :string
+#  line2            :string
+#  locality         :string
+#  postal_code      :integer
+#  region           :string
+#  created_at       :datetime         not null
+#  updated_at       :datetime         not null
+#  addressable_id   :uuid
+#
+# Indexes
+#
+#  index_addresses_on_addressable  (addressable_type,addressable_id)
+#
 require "test_helper"
 
 class AddressTest < ActiveSupport::TestCase

@@ -1,3 +1,26 @@
+# == Schema Information
+#
+# Table name: budget_categories
+#
+#  id                :uuid             not null, primary key
+#  budgeted_spending :decimal(19, 4)   not null
+#  currency          :string           not null
+#  created_at        :datetime         not null
+#  updated_at        :datetime         not null
+#  budget_id         :uuid             not null
+#  category_id       :uuid             not null
+#
+# Indexes
+#
+#  index_budget_categories_on_budget_id                  (budget_id)
+#  index_budget_categories_on_budget_id_and_category_id  (budget_id,category_id) UNIQUE
+#  index_budget_categories_on_category_id                (category_id)
+#
+# Foreign Keys
+#
+#  fk_rails_...  (budget_id => budgets.id)
+#  fk_rails_...  (category_id => categories.id)
+#
 class BudgetCategory < ApplicationRecord
   include Monetizable
 

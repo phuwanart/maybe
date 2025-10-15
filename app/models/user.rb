@@ -1,3 +1,46 @@
+# == Schema Information
+#
+# Table name: users
+#
+#  id                            :uuid             not null, primary key
+#  active                        :boolean          default(TRUE), not null
+#  ai_enabled                    :boolean          default(FALSE), not null
+#  default_period                :string           default("last_30_days"), not null
+#  email                         :string
+#  first_name                    :string
+#  goals                         :text             default([]), is an Array
+#  last_name                     :string
+#  onboarded_at                  :datetime
+#  otp_backup_codes              :string           default([]), is an Array
+#  otp_required                  :boolean          default(FALSE), not null
+#  otp_secret                    :string
+#  password_digest               :string
+#  role                          :string           default("member"), not null
+#  rule_prompt_dismissed_at      :datetime
+#  rule_prompts_disabled         :boolean          default(FALSE)
+#  set_onboarding_goals_at       :datetime
+#  set_onboarding_preferences_at :datetime
+#  show_ai_sidebar               :boolean          default(TRUE)
+#  show_sidebar                  :boolean          default(TRUE)
+#  theme                         :string           default("system")
+#  unconfirmed_email             :string
+#  created_at                    :datetime         not null
+#  updated_at                    :datetime         not null
+#  family_id                     :uuid             not null
+#  last_viewed_chat_id           :uuid
+#
+# Indexes
+#
+#  index_users_on_email                (email) UNIQUE
+#  index_users_on_family_id            (family_id)
+#  index_users_on_last_viewed_chat_id  (last_viewed_chat_id)
+#  index_users_on_otp_secret           (otp_secret) UNIQUE WHERE (otp_secret IS NOT NULL)
+#
+# Foreign Keys
+#
+#  fk_rails_...  (family_id => families.id)
+#  fk_rails_...  (last_viewed_chat_id => chats.id)
+#
 class User < ApplicationRecord
   has_secure_password
 

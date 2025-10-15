@@ -1,3 +1,35 @@
+# == Schema Information
+#
+# Table name: plaid_items
+#
+#  id                      :uuid             not null, primary key
+#  access_token            :string
+#  available_products      :string           default([]), is an Array
+#  billed_products         :string           default([]), is an Array
+#  institution_color       :string
+#  institution_url         :string
+#  name                    :string
+#  next_cursor             :string
+#  plaid_region            :string           default("us"), not null
+#  raw_institution_payload :jsonb
+#  raw_payload             :jsonb
+#  scheduled_for_deletion  :boolean          default(FALSE)
+#  status                  :string           default("good"), not null
+#  created_at              :datetime         not null
+#  updated_at              :datetime         not null
+#  family_id               :uuid             not null
+#  institution_id          :string
+#  plaid_id                :string           not null
+#
+# Indexes
+#
+#  index_plaid_items_on_family_id  (family_id)
+#  index_plaid_items_on_plaid_id   (plaid_id) UNIQUE
+#
+# Foreign Keys
+#
+#  fk_rails_...  (family_id => families.id)
+#
 class PlaidItem < ApplicationRecord
   include Syncable, Provided
 

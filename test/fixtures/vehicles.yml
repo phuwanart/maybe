@@ -1,1 +1,15 @@
+# == Schema Information
+#
+# Table name: vehicles
+#
+#  id                :uuid             not null, primary key
+#  locked_attributes :jsonb
+#  make              :string
+#  mileage_unit      :string
+#  mileage_value     :integer
+#  model             :string
+#  year              :integer
+#  created_at        :datetime         not null
+#  updated_at        :datetime         not null
+#
 one: { }

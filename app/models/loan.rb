@@ -1,3 +1,16 @@
+# == Schema Information
+#
+# Table name: loans
+#
+#  id                :uuid             not null, primary key
+#  initial_balance   :decimal(19, 4)
+#  interest_rate     :decimal(10, 3)
+#  locked_attributes :jsonb
+#  rate_type         :string
+#  term_months       :integer
+#  created_at        :datetime         not null
+#  updated_at        :datetime         not null
+#
 class Loan < ApplicationRecord
   include Accountable
 

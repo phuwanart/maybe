@@ -1,3 +1,29 @@
+# == Schema Information
+#
+# Table name: holdings
+#
+#  id          :uuid             not null, primary key
+#  amount      :decimal(19, 4)   not null
+#  currency    :string           not null
+#  date        :date             not null
+#  price       :decimal(19, 4)   not null
+#  qty         :decimal(19, 4)   not null
+#  created_at  :datetime         not null
+#  updated_at  :datetime         not null
+#  account_id  :uuid             not null
+#  security_id :uuid             not null
+#
+# Indexes
+#
+#  idx_on_account_id_security_id_date_currency_5323e39f8b  (account_id,security_id,date,currency) UNIQUE
+#  index_holdings_on_account_id                            (account_id)
+#  index_holdings_on_security_id                           (security_id)
+#
+# Foreign Keys
+#
+#  fk_rails_...  (account_id => accounts.id)
+#  fk_rails_...  (security_id => securities.id)
+#
 class Holding < ApplicationRecord
   include Monetizable, Gapfillable
 

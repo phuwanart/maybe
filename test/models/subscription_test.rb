@@ -1,3 +1,27 @@
+# == Schema Information
+#
+# Table name: subscriptions
+#
+#  id                     :uuid             not null, primary key
+#  amount                 :decimal(19, 4)
+#  currency               :string
+#  current_period_ends_at :datetime
+#  interval               :string
+#  status                 :string           not null
+#  trial_ends_at          :datetime
+#  created_at             :datetime         not null
+#  updated_at             :datetime         not null
+#  family_id              :uuid             not null
+#  stripe_id              :string
+#
+# Indexes
+#
+#  index_subscriptions_on_family_id  (family_id) UNIQUE
+#
+# Foreign Keys
+#
+#  fk_rails_...  (family_id => families.id)
+#
 require "test_helper"
 
 class SubscriptionTest < ActiveSupport::TestCase

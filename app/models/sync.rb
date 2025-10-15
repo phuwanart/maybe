@@ -1,3 +1,33 @@
+# == Schema Information
+#
+# Table name: syncs
+#
+#  id                :uuid             not null, primary key
+#  completed_at      :datetime
+#  data              :jsonb
+#  error             :string
+#  failed_at         :datetime
+#  pending_at        :datetime
+#  status            :string           default("pending")
+#  syncable_type     :string           not null
+#  syncing_at        :datetime
+#  window_end_date   :date
+#  window_start_date :date
+#  created_at        :datetime         not null
+#  updated_at        :datetime         not null
+#  parent_id         :uuid
+#  syncable_id       :uuid             not null
+#
+# Indexes
+#
+#  index_syncs_on_parent_id  (parent_id)
+#  index_syncs_on_status     (status)
+#  index_syncs_on_syncable   (syncable_type,syncable_id)
+#
+# Foreign Keys
+#
+#  fk_rails_...  (parent_id => syncs.id)
+#
 class Sync < ApplicationRecord
   # We run a cron that marks any syncs that have not been resolved in 24 hours as "stale"
   # Syncs often become stale when new code is deployed and the worker restarts

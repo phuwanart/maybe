@@ -1,3 +1,26 @@
+# == Schema Information
+#
+# Table name: budgets
+#
+#  id                :uuid             not null, primary key
+#  budgeted_spending :decimal(19, 4)
+#  currency          :string           not null
+#  end_date          :date             not null
+#  expected_income   :decimal(19, 4)
+#  start_date        :date             not null
+#  created_at        :datetime         not null
+#  updated_at        :datetime         not null
+#  family_id         :uuid             not null
+#
+# Indexes
+#
+#  index_budgets_on_family_id                              (family_id)
+#  index_budgets_on_family_id_and_start_date_and_end_date  (family_id,start_date,end_date) UNIQUE
+#
+# Foreign Keys
+#
+#  fk_rails_...  (family_id => families.id)
+#
 class Budget < ApplicationRecord
   include Monetizable
 
