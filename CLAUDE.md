@@ -28,6 +28,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 - `bin/rails db:migrate` - Run pending migrations
 - `bin/rails db:rollback` - Rollback last migration
 - `bin/rails db:seed` - Load seed data
+- Schema annotations auto-update on migrate via `annotaterb` — do not hand-edit `# == Schema Information` blocks
 
 ### Setup
 - `bin/setup` - Initial project setup (installs dependencies, prepares database)
@@ -72,7 +73,8 @@ The Maybe app runs in two distinct modes:
 
 ### Core Domain Model
 The application is built around financial data management with these key relationships:
-- **User** → has many **Accounts** → has many **Transactions**
+- **Family** → has many **Users** and **Accounts** → has many **Transactions**
+  (Family is the data-ownership root — hence `Current.family`, not `Current.user`, for data access)
 - **Account** types: checking, savings, credit cards, investments, crypto, loans, properties
 - **Transaction** → belongs to **Category**, can have **Tags** and **Rules**
 - **Investment accounts** → have **Holdings** → track **Securities** via **Trades**
@@ -97,9 +99,9 @@ Two primary data ingestion methods:
 
 ### Background Processing
 Sidekiq handles asynchronous tasks:
-- Account syncing (`SyncAccountsJob`)
-- Import processing (`ImportDataJob`)
-- AI chat responses (`CreateChatResponseJob`)
+- Account syncing (`SyncJob`)
+- Import processing (`ImportJob`)
+- AI chat responses (`AssistantResponseJob`)
 - Scheduled maintenance via sidekiq-cron
 
 ### Frontend Architecture
